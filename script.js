@@ -1,49 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
-    const sections = document.querySelectorAll('section');
-    const navButtons = document.querySelectorAll('nav button');
-    const communityList = document.getElementById('communityList');
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('main section');
+    const featuredCommunities = document.getElementById('featuredCommunities');
     const exploreList = document.getElementById('exploreList');
     const eventsList = document.getElementById('eventsList');
     const searchInput = document.getElementById('searchCommunities');
-    const searchBtn = document.getElementById('searchBtn');
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const getStartedBtn = document.getElementById('getStartedBtn');
-    const switchToRegisterLink = document.getElementById('switchToRegister');
-    const switchToLoginLink = document.getElementById('switchToLogin');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const loginBtn = document.getElementById('loginBtn');
+    const registerBtn = document.getElementById('registerBtn');
+    const loginModal = document.getElementById('loginModal');
+    const registerModal = document.getElementById('registerModal');
+    const closeButtons = document.querySelectorAll('.close');
+    const switchToRegister = document.getElementById('switchToRegister');
+    const switchToLogin = document.getElementById('switchToLogin');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
 
     // Mock data for communities
     const mockCommunities = [
-        { id: 1, name: 'Programming Study Group', description: 'A group for learning programming together.', tags: ['technology', 'learning'], image: 'https://source.unsplash.com/random/300x300/?programming', members: 120 },
-        { id: 2, name: 'Book Club', description: 'Discuss your favorite books with fellow readers.', tags: ['arts', 'reading'], image: 'https://source.unsplash.com/random/300x300/?books', members: 85 },
-        { id: 3, name: 'Fitness Enthusiasts', description: 'Share tips and motivation for staying fit.', tags: ['lifestyle', 'health'], image: 'https://source.unsplash.com/random/300x300/?fitness', members: 200 },
-        { id: 4, name: 'Amateur Photographers', description: 'Show off your best shots and get feedback.', tags: ['arts', 'photography'], image: 'https://source.unsplash.com/random/300x300/?photography', members: 150 },
-        { id: 5, name: 'Culinary Adventures', description: 'Explore new recipes and cooking techniques.', tags: ['lifestyle', 'food'], image: 'https://source.unsplash.com/random/300x300/?cooking', members: 95 },
-        { id: 6, name: 'Language Exchange', description: 'Practice speaking new languages with native speakers.', tags: ['technology', 'learning'], image: 'https://source.unsplash.com/random/300x300/?language', members: 110 }
+        { id: 1, name: 'Tech Innovators', description: 'A hub for tech enthusiasts and innovators.', tags: ['technology', 'innovation'], image: 'https://source.unsplash.com/random/300x200/?technology', members: 1520 },
+        { id: 2, name: 'Creative Arts Collective', description: 'Bringing together artists from all disciplines.', tags: ['arts', 'creativity'], image: 'https://source.unsplash.com/random/300x200/?art', members: 985 },
+        { id: 3, name: 'Fitness Fanatics', description: 'Motivate and support each other in fitness journeys.', tags: ['lifestyle', 'fitness'], image: 'https://source.unsplash.com/random/300x200/?fitness', members: 2150 },
+        { id: 4, name: 'Bookworms Unite', description: 'Discuss and discover great books together.', tags: ['arts', 'literature'], image: 'https://source.unsplash.com/random/300x200/?books', members: 1320 },
+        { id: 5, name: 'Green Earth Initiative', description: 'Working together for a sustainable future.', tags: ['lifestyle', 'environment'], image: 'https://source.unsplash.com/random/300x200/?nature', members: 1750 },
+        { id: 6, name: 'Culinary Explorers', description: 'Embark on gastronomic adventures around the world.', tags: ['lifestyle', 'food'], image: 'https://source.unsplash.com/random/300x200/?food', members: 890 },
+        { id: 7, name: 'Digital Nomads', description: 'Connect with fellow remote workers and travelers.', tags: ['lifestyle', 'travel'], image: 'https://source.unsplash.com/random/300x200/?travel', members: 1630 },
+        { id: 8, name: 'AI Enthusiasts', description: 'Explore the fascinating world of artificial intelligence.', tags: ['technology', 'AI'], image: 'https://source.unsplash.com/random/300x200/?robot', members: 1280 },
     ];
 
     // Mock data for events
     const mockEvents = [
-        { id: 1, name: 'Web Development Workshop', description: 'Learn the basics of web development.', date: '2024-08-15', image: 'https://source.unsplash.com/random/300x300/?webdevelopment', attendees: 50 },
-        { id: 2, name: 'Book Reading: Classic Literature', description: 'Join us for a reading of classic literature.', date: '2024-08-20', image: 'https://source.unsplash.com/random/300x300/?literature', attendees: 30 },
-        { id: 3, name: 'Community Fitness Challenge', description: 'A 30-day fitness challenge for all levels.', date: '2024-09-01', image: 'https://source.unsplash.com/random/300x300/?exercise', attendees: 100 }
+        { id: 1, name: 'Tech Conference 2024', description: 'Annual gathering of tech innovators and enthusiasts.', date: '2024-09-15', image: 'https://source.unsplash.com/random/300x200/?conference', attendees: 500 },
+        { id: 2, name: 'Art Exhibition: Urban Perspectives', description: 'Showcasing urban-inspired artworks from local artists.', date: '2024-08-20', image: 'https://source.unsplash.com/random/300x200/?exhibition', attendees: 250 },
+        { id: 3, name: 'Fitness Bootcamp', description: 'Intensive 3-day fitness bootcamp for all levels.', date: '2024-07-01', image: 'https://source.unsplash.com/random/300x200/?bootcamp', attendees: 100 },
     ];
 
     // Navigation
-    navButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.id.replace('Btn', '');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
             sections.forEach(section => {
-                section.classList.remove('active');
-                section.style.opacity = 0;
+                section.style.display = 'none';
             });
-            const targetSection = document.getElementById(targetId);
-            targetSection.classList.add('active');
-            setTimeout(() => {
-                targetSection.style.opacity = 1;
-            }, 50);
-            navButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+            document.getElementById(targetId).style.display = 'block';
+            navLinks.forEach(navLink => navLink.classList.remove('active'));
+            link.classList.add('active');
         });
     });
 
@@ -54,7 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.classList.add('swiper-slide');
             card.innerHTML = `
-                <div class="community-card" style="background-image: url('${community.image}');">
+                <div class="community-card">
+                    <img src="${community.image}" alt="${community.name}">
                     <div class="card-content">
                         <h3>${community.name}</h3>
                         <p>${community.description}</p>
@@ -62,43 +69,37 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${community.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                         </div>
                         <p class="members"><i class="fas fa-users"></i> ${community.members} members</p>
-                        <button class="join-btn" data-id="${community.id}">Join</button>
+                        <button class="join-btn" data-id="${community.id}">Join Community</button>
                     </div>
                 </div>
             `;
             container.appendChild(card);
         });
 
-        // Initialize Swiper
-        new Swiper('.swiper-container', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-
-        // Add join button functionality
-        container.querySelectorAll('.join-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const communityId = e.target.dataset.id;
-                joinCommunity(communityId);
+        // Initialize Swiper for featured communities
+        if (container === featuredCommunities) {
+            new Swiper('.featured-communities', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                    },
+                    968: {
+                        slidesPerView: 3,
+                    }
+                }
             });
-        });
+        }
     }
 
     // Display events
@@ -107,8 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
         events.forEach(event => {
             const card = document.createElement('div');
             card.classList.add('event-card');
-            card.style.backgroundImage = `url('${event.image}')`;
             card.innerHTML = `
+                <img src="${event.image}" alt="${event.name}">
                 <div class="card-content">
                     <h3>${event.name}</h3>
                     <p>${event.description}</p>
@@ -119,23 +120,15 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             container.appendChild(card);
         });
-
-        // Add RSVP button functionality
-        container.querySelectorAll('.rsvp-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const eventId = e.target.dataset.id;
-                rsvpEvent(eventId);
-            });
-        });
     }
 
     // Initial display
-    displayCommunities(communityList, mockCommunities);
+    displayCommunities(featuredCommunities, mockCommunities.slice(0, 6));
     displayCommunities(exploreList, mockCommunities);
     displayEvents(eventsList, mockEvents);
 
     // Search functionality
-    function searchCommunities() {
+    searchInput.addEventListener('input', () => {
         const searchTerm = searchInput.value.toLowerCase();
         const filteredCommunities = mockCommunities.filter(community => 
             community.name.toLowerCase().includes(searchTerm) || 
@@ -143,10 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             community.tags.some(tag => tag.toLowerCase().includes(searchTerm))
         );
         displayCommunities(exploreList, filteredCommunities);
-    }
-
-    searchInput.addEventListener('input', searchCommunities);
-    searchBtn.addEventListener('click', searchCommunities);
+    });
 
     // Filter functionality
     filterBtns.forEach(btn => {
@@ -167,72 +157,107 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Load more functionality
+    let currentPage = 1;
+    const communitiesPerPage = 6;
+    loadMoreBtn.addEventListener('click', () => {
+        currentPage++;
+        const startIndex = (currentPage - 1) * communitiesPerPage;
+        const endIndex = startIndex + communitiesPerPage;
+        const newCommunities = mockCommunities.slice(startIndex, endIndex);
+        displayCommunities(exploreList, [...exploreList.children, ...newCommunities]);
+
+        if (endIndex >= mockCommunities.length) {
+            loadMoreBtn.style.display = 'none';
+        }
+    });
+
+    // Modal functionality
+    function openModal(modal) {
+        modal.style.display = 'block';
+    }
+
+    function closeModal(modal) {
+        modal.style.display = 'none';
+    }
+
+    loginBtn.addEventListener('click', () => openModal(loginModal));
+    registerBtn.addEventListener('click', () => openModal(registerModal));
+
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            closeModal(btn.closest('.modal'));
+        });
+    });
+
+    switchToRegister.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeModal(loginModal);
+        openModal(registerModal);
+    });
+
+    switchToLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeModal(registerModal);
+        openModal(loginModal);
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal')) {
+            closeModal(e.target);
+        }
+    });
+
     // Form submissions
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = e.target.elements[0].value;
-        const password = e.target.elements[1].value;
-        try {
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            showNotification('Login successful!');
-            e.target.reset();
-        } catch (error) {
-            showNotification('Login failed. Please try again.', 'error');
+        // Add login logic here
+        showNotification('Login successful!');
+        closeModal(loginModal);
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Add registration logic here
+        showNotification('Registration successful!');
+        closeModal(registerModal);
+    });
+
+    // Dark mode toggle
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+        darkModeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    });
+
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    // Chat functionality
+    chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const message = chatInput.value.trim();
+        if (message) {
+            addChatMessage('You', message);
+            chatInput.value = '';
+            // Simulate a response after a short delay
+            setTimeout(() => {
+                addChatMessage('Bot', 'Thank you for your message. This is a simulated response.');
+            }, 1000);
         }
     });
 
-    document.getElementById('registerForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const username = e.target.elements[0].value;
-        const email = e.target.elements[1].value;
-        const password = e.target.elements[2].value;
-        const confirmPassword = e.target.elements[3].value;
-
-        if (password !== confirmPassword) {
-            showNotification('Passwords do not match.', 'error');
-            return;
-        }
-
-        try {
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            showNotification('Registration successful!');
-            e.target.reset();
-        } catch (error) {
-            showNotification('Registration failed. Please try again.', 'error');
-        }
-    });
-
-    document.getElementById('createCommunityForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const name = e.target.elements[0].value;
-        const description = e.target.elements[1].value;
-        const tags = e.target.elements[2].value.split(',').map(tag => tag.trim());
-        const imageFile = e.target.elements[3].files[0];
-
-        try {
-            // Simulate image upload and API call
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            const imageUrl = URL.createObjectURL(imageFile);
-            
-            const newCommunity = {
-                id: mockCommunities.length + 1,
-                name,
-                description,
-                tags,
-                image: imageUrl,
-                members: 1
-            };
-            
-            mockCommunities.push(newCommunity);
-            displayCommunities(exploreList, mockCommunities);
-            showNotification('Community created successfully!');
-            e.target.reset();
-        } catch (error) {
-            showNotification('Failed to create community. Please try again.', 'error');
-        }
-    });
+    function addChatMessage(sender, message) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chat-message');
+        messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
     // Notification function
     function showNotification(message, type = 'success') {
@@ -242,120 +267,22 @@ document.addEventListener('DOMContentLoaded', () => {
         notification.style.display = 'block';
 
         setTimeout(() => {
-            notification.classList.add('show');
-        }, 10);
-
-        setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 300);
+            notification.style.display = 'none';
         }, 3000);
     }
 
-    // Switch between login and register forms
-    switchToRegisterLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('login').classList.remove('active');
-        document.getElementById('register').classList.add('active');
-    });
+    // Typing effect for hero text
+    const heroText = "Connect, Share, and Grow Together";
+    const heroElement = document.querySelector('.typing-effect');
+    let i = 0;
 
-    switchToLoginLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('register').classList.remove('active');
-        document.getElementById('login').classList.add('active');
-    });
-
-    // Get Started button
-    getStartedBtn.addEventListener('click', () => {
-        document.getElementById('exploreBtn').click();
-    });
-
-    // Join community function
-    function joinCommunity(communityId) {
-        const community = mockCommunities.find(c => c.id === parseInt(communityId));
-        if (community) {
-            community.members++;
-            showNotification(`You've joined ${community.name}!`);
-            displayCommunities(communityList, mockCommunities);
-            displayCommunities(exploreList, mockCommunities);
+    function typeWriter() {
+        if (i < heroText.length) {
+            heroElement.innerHTML += heroText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
         }
     }
 
-    // RSVP event function
-    function rsvpEvent(eventId) {
-        const event = mockEvents.find(e => e.id === parseInt(eventId));
-        if (event) {
-            event.attendees++;
-            showNotification(`You've RSVP'd to ${event.name}!`);
-            displayEvents(eventsList, mockEvents);
-        }
-    }
-
-    // Add animation to community cards and event cards on scroll
-    function animateOnScroll() {
-        const cards = document.querySelectorAll('.community-card, .event-card');
-        cards.forEach(card => {
-            const cardTop = card.getBoundingClientRect().top;
-            const cardBottom = card.getBoundingClientRect().bottom;
-            if (cardTop < window.innerHeight && cardBottom > 0) {
-                card.classList.add('animate');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Call once on load to check for visible elements
-
-    // Add parallax effect to hero section
-    const hero = document.querySelector('.hero');
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.pageYOffset;
-        hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
-    });
-
-    // Add hover effect to community and event cards
-    document.querySelectorAll('.community-card, .event-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'scale(1.05)';
-            card.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'scale(1)';
-            card.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
-        });
-    });
-
-    // Add smooth scrolling for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Add loading animation
-    function showLoading() {
-        const loading = document.createElement('div');
-        loading.classList.add('loading');
-        loading.innerHTML = '<div class="spinner"></div>';
-        document.body.appendChild(loading);
-    }
-
-    function hideLoading() {
-        const loading = document.querySelector('.loading');
-        if (loading) {
-            loading.remove();
-        }
-    }
-
-    // Simulate loading when switching sections
-    navButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            showLoading();
-            setTimeout(hideLoading, 500);
-        });
-    });
+    typeWriter();
 });
