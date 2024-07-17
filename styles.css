@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
-    --background-color: #ecf0f1;
-    --text-color: #34495e;
+    --background-color: #f4f4f4;
+    --text-color: #333;
     --card-background: #ffffff;
+    --accent-color: #e74c3c;
 }
 
 * {
@@ -66,13 +67,49 @@ nav button:hover, nav button.active {
 }
 
 main {
-    padding: 5rem 0 2rem;
+    padding-top: 80px;
     min-height: calc(100vh - 60px);
+}
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/random/1600x900/?community');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
 }
 
 section {
     display: none;
     animation: fadeIn 0.5s ease-in-out;
+    padding: 2rem 0;
 }
 
 section.active {
@@ -80,7 +117,7 @@ section.active {
 }
 
 h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: var(--primary-color);
     font-weight: 600;
 }
@@ -116,14 +153,14 @@ button:hover {
     transform: translateY(-2px);
 }
 
-.community-grid {
+.community-grid, .events-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
 
-.community-card {
+.community-card, .event-card {
     background-color: var(--card-background);
     border-radius: 10px;
     padding: 1.5rem;
@@ -131,28 +168,28 @@ button:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.community-card:hover {
+.community-card:hover, .event-card:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     transform: translateY(-5px);
 }
 
-.community-card h3 {
+.community-card h3, .event-card h3 {
     color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
-.community-card p {
+.community-card p, .event-card p {
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
 
-.community-card .tags {
+.tags {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1rem;
 }
 
-.community-card .tag {
+.tag {
     background-color: var(--primary-color);
     color: #ffffff;
     padding: 0.25rem 0.5rem;
@@ -162,28 +199,120 @@ button:hover {
     margin-bottom: 0.5rem;
 }
 
+.search-container {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.search-container input {
+    flex-grow: 1;
+    margin-right: 0.5rem;
+}
+
+.search-container button {
+    padding: 0.75rem 1rem;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.image-upload {
+    margin-bottom: 1rem;
+}
+
+.image-upload label {
+    display: inline-block;
+    padding: 0.75rem 1rem;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.image-upload label:hover {
+    background-color: #2980b9;
+}
+
+.image-upload input[type="file"] {
+    display: none;
+}
+
 footer {
     background-color: var(--primary-color);
     color: #ffffff;
-    text-align: center;
-    padding: 1rem 0;
+    padding: 2rem 0 1rem;
 }
 
-footer .container {
+.footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul {
+    list-style-type: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: var(--secondary-color);
 }
 
 .social-links a {
     color: #ffffff;
     font-size: 1.2rem;
-    margin-left: 1rem;
+    margin-right: 1rem;
     transition: color 0.3s;
 }
 
 .social-links a:hover {
     color: var(--secondary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .notification {
@@ -210,6 +339,19 @@ footer .container {
     to { transform: translateX(0); }
 }
 
+.swiper-container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+}
+
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
@@ -221,5 +363,21 @@ footer .container {
 
     nav button {
         margin-bottom: 0.5rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-right: 0;
     }
 }

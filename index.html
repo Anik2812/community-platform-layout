@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConnectHub - Community Platform</title>
+    <title>ConnectHub - Your Community Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1><i class="fas fa-users"></i> ConnectHub</h1>
+            <h1><i class="fas fa-network-wired"></i> ConnectHub</h1>
             <nav>
                 <button id="homeBtn" class="active"><i class="fas fa-home"></i> Home</button>
                 <button id="exploreBtn"><i class="fas fa-compass"></i> Explore</button>
+                <button id="eventsBtn"><i class="fas fa-calendar-alt"></i> Events</button>
                 <button id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
                 <button id="registerBtn"><i class="fas fa-user-plus"></i> Register</button>
                 <button id="createCommunityBtn"><i class="fas fa-plus-circle"></i> Create Community</button>
@@ -23,12 +25,20 @@
 
     <main>
         <section id="home" class="active">
+            <div class="hero">
+                <div class="container">
+                    <h2>Connect, Share, and Grow Together</h2>
+                    <p>Join ConnectHub and discover communities that match your interests!</p>
+                    <button id="getStartedBtn" class="cta-button">Get Started</button>
+                </div>
+            </div>
             <div class="container">
-                <h2>Welcome to ConnectHub</h2>
-                <p>Connect, share, and grow with like-minded individuals.</p>
-                <div id="featuredCommunities">
-                    <h3>Featured Communities</h3>
-                    <div id="communityList" class="community-grid"></div>
+                <h3>Featured Communities</h3>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper" id="communityList"></div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
@@ -36,8 +46,24 @@
         <section id="explore">
             <div class="container">
                 <h2>Explore Communities</h2>
-                <input type="text" id="searchCommunities" placeholder="Search communities...">
+                <div class="search-container">
+                    <input type="text" id="searchCommunities" placeholder="Search communities...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="technology">Technology</button>
+                    <button class="filter-btn" data-filter="arts">Arts</button>
+                    <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+                </div>
                 <div id="exploreList" class="community-grid"></div>
+            </div>
+        </section>
+
+        <section id="events">
+            <div class="container">
+                <h2>Upcoming Events</h2>
+                <div id="eventsList" class="events-grid"></div>
             </div>
         </section>
 
@@ -49,6 +75,7 @@
                     <input type="password" placeholder="Password" required>
                     <button type="submit">Login</button>
                 </form>
+                <p>Don't have an account? <a href="#" id="switchToRegister">Register here</a></p>
             </div>
         </section>
 
@@ -62,6 +89,7 @@
                     <input type="password" placeholder="Confirm Password" required>
                     <button type="submit">Register</button>
                 </form>
+                <p>Already have an account? <a href="#" id="switchToLogin">Login here</a></p>
             </div>
         </section>
 
@@ -72,6 +100,12 @@
                     <input type="text" placeholder="Community Name" required>
                     <textarea placeholder="Community Description" required></textarea>
                     <input type="text" placeholder="Tags (comma-separated)" required>
+                    <div class="image-upload">
+                        <label for="communityImage">
+                            <i class="fas fa-upload"></i> Upload Community Image
+                        </label>
+                        <input type="file" id="communityImage" accept="image/*">
+                    </div>
                     <button type="submit">Create Community</button>
                 </form>
             </div>
@@ -80,11 +114,32 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 ConnectHub. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About ConnectHub</h3>
+                    <p>ConnectHub is a platform designed to bring people together through shared interests and passions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ConnectHub. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -92,6 +147,7 @@
     <div id="notification" class="notification"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
