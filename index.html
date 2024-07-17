@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConnectHub - Your Community Platform</title>
+    <title>ConnectHub - Your Interactive Community Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -16,18 +16,20 @@
                 <button id="homeBtn" class="active"><i class="fas fa-home"></i> Home</button>
                 <button id="exploreBtn"><i class="fas fa-compass"></i> Explore</button>
                 <button id="eventsBtn"><i class="fas fa-calendar-alt"></i> Events</button>
+                <button id="chatBtn"><i class="fas fa-comments"></i> Chat</button>
                 <button id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
                 <button id="registerBtn"><i class="fas fa-user-plus"></i> Register</button>
                 <button id="createCommunityBtn"><i class="fas fa-plus-circle"></i> Create Community</button>
             </nav>
+            <button id="darkModeToggle"><i class="fas fa-moon"></i></button>
         </div>
     </header>
 
     <main>
         <section id="home" class="active">
-            <div class="hero">
+            <div class="hero parallax">
                 <div class="container">
-                    <h2>Connect, Share, and Grow Together</h2>
+                    <h2 class="typing">Connect, Share, and Grow Together</h2>
                     <p>Join ConnectHub and discover communities that match your interests!</p>
                     <button id="getStartedBtn" class="cta-button">Get Started</button>
                 </div>
@@ -64,6 +66,19 @@
             <div class="container">
                 <h2>Upcoming Events</h2>
                 <div id="eventsList" class="events-grid"></div>
+            </div>
+        </section>
+
+        <section id="chat">
+            <div class="container">
+                <h2>Community Chat</h2>
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <form id="chatForm">
+                        <input type="text" id="chatInput" placeholder="Type your message...">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
             </div>
         </section>
 
