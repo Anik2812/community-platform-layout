@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectHub - Community Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-users"></i> ConnectHub</h1>
+            <nav>
+                <button id="homeBtn" class="active"><i class="fas fa-home"></i> Home</button>
+                <button id="exploreBtn"><i class="fas fa-compass"></i> Explore</button>
+                <button id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
+                <button id="registerBtn"><i class="fas fa-user-plus"></i> Register</button>
+                <button id="createCommunityBtn"><i class="fas fa-plus-circle"></i> Create Community</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="active">
+            <div class="container">
+                <h2>Welcome to ConnectHub</h2>
+                <p>Connect, share, and grow with like-minded individuals.</p>
+                <div id="featuredCommunities">
+                    <h3>Featured Communities</h3>
+                    <div id="communityList" class="community-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="explore">
+            <div class="container">
+                <h2>Explore Communities</h2>
+                <input type="text" id="searchCommunities" placeholder="Search communities...">
+                <div id="exploreList" class="community-grid"></div>
+            </div>
+        </section>
+
+        <section id="login">
+            <div class="container">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="register">
+            <div class="container">
+                <h2>Register</h2>
+                <form id="registerForm">
+                    <input type="text" placeholder="Username" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="createCommunity">
+            <div class="container">
+                <h2>Create a New Community</h2>
+                <form id="createCommunityForm">
+                    <input type="text" placeholder="Community Name" required>
+                    <textarea placeholder="Community Description" required></textarea>
+                    <input type="text" placeholder="Tags (comma-separated)" required>
+                    <button type="submit">Create Community</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ConnectHub. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
