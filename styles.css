@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-    --accent-color: #e74c3c;
-    --background-color: #f4f4f4;
+    --primary-color: #3a86ff;
+    --secondary-color: #8338ec;
+    --accent-color: #ff006e;
+    --background-color: #f8f9fa;
     --text-color: #333;
     --card-background: #ffffff;
+    --transition: all 0.3s ease-in-out;
 }
 
 * {
@@ -20,7 +21,7 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
-    transition: background-color 0.3s, color 0.3s;
+    transition: var(--transition);
 }
 
 .container {
@@ -38,7 +39,8 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
 }
 
 header .container {
@@ -53,13 +55,14 @@ header .container {
 }
 
 .logo i {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-right: 0.5rem;
+    color: var(--accent-color);
 }
 
 .logo h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 nav ul {
@@ -76,11 +79,24 @@ nav ul li a {
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: var(--transition);
+    position: relative;
 }
 
-nav ul li a:hover, nav ul li a.active {
-    background-color: rgba(255, 255, 255, 0.2);
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+    width: 100%;
 }
 
 .user-actions button {
@@ -90,12 +106,13 @@ nav ul li a:hover, nav ul li a.active {
     padding: 0.5rem 1rem;
     margin-left: 0.5rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: var(--transition);
     border-radius: 5px;
 }
 
 .user-actions button:hover {
     background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
 /* Hero Section Styles */
@@ -108,16 +125,32 @@ nav ul li a:hover, nav ul li a.active {
     text-align: center;
     padding: 150px 0;
     margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    opacity: 0.7;
+    z-index: -1;
 }
 
 .hero h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .cta-button {
@@ -125,15 +158,19 @@ nav ul li a:hover, nav ul li a.active {
     color: #ffffff;
     padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .cta-button:hover {
-    background-color: #c0392b;
-    transform: translateY(-2px);
+    background-color: #ff4081;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Featured Communities Styles */
@@ -147,7 +184,7 @@ nav ul li a:hover, nav ul li a.active {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: var(--transition);
 }
 
 .swiper-slide:hover {
@@ -165,6 +202,11 @@ nav ul li a:hover, nav ul li a.active {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: var(--transition);
+}
+
+.community-card:hover img {
+    transform: scale(1.05);
 }
 
 .card-content {
@@ -177,11 +219,14 @@ nav ul li a:hover, nav ul li a.active {
 .card-content h3 {
     margin-bottom: 0.5rem;
     color: var(--primary-color);
+    font-size: 1.3rem;
 }
 
 .card-content p {
     margin-bottom: 1rem;
     flex-grow: 1;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 .tags {
@@ -198,8 +243,12 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 0.8rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
+    transition: var(--transition);
 }
 
+.tag:hover {
+    background-color: var(--accent-color);
+}
 .members {
     font-size: 0.9rem;
     color: #666;
@@ -213,12 +262,16 @@ nav ul li a:hover, nav ul li a.active {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: var(--transition);
     align-self: flex-start;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
 .join-btn:hover {
-    background-color: #2980b9;
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 /* Explore Section Styles */
@@ -227,18 +280,41 @@ nav ul li a:hover, nav ul li a.active {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.search-wrapper {
+    position: relative;
+    flex-grow: 1;
+    margin-right: 1rem;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
 }
 
 #searchCommunities {
-    flex-grow: 1;
-    padding: 0.75rem;
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 50px;
     font-size: 1rem;
+    transition: var(--transition);
+}
+
+#searchCommunities:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 .filter-buttons {
     display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
 }
 
 .filter-btn {
@@ -246,15 +322,18 @@ nav ul li a:hover, nav ul li a.active {
     color: var(--text-color);
     border: 1px solid #ddd;
     padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 5px;
+    transition: var(--transition);
+    border-radius: 50px;
+    font-size: 0.9rem;
 }
 
 .filter-btn.active, .filter-btn:hover {
     background-color: var(--primary-color);
     color: #ffffff;
+    border-color: var(--primary-color);
 }
 
 .community-grid {
@@ -270,13 +349,17 @@ nav ul li a:hover, nav ul li a.active {
     color: #ffffff;
     border: none;
     padding: 0.75rem 1.5rem;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
 }
 
 .load-more-btn:hover {
-    background-color: #2980b9;
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 /* Events Section Styles */
@@ -286,13 +369,12 @@ nav ul li a:hover, nav ul li a.active {
     gap: 1.5rem;
 }
 
-/* Events Section Styles (continued) */
 .event-card {
     background-color: var(--card-background);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: var(--transition);
 }
 
 .event-card:hover {
@@ -304,6 +386,11 @@ nav ul li a:hover, nav ul li a.active {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: var(--transition);
+}
+
+.event-card:hover img {
+    transform: scale(1.05);
 }
 
 .event-content {
@@ -317,6 +404,8 @@ nav ul li a:hover, nav ul li a.active {
 
 .event-content p {
     margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 .event-date, .event-attendees {
@@ -330,13 +419,17 @@ nav ul li a:hover, nav ul li a.active {
     color: #ffffff;
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: var(--transition);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
 .rsvp-btn:hover {
-    background-color: #c0392b;
+    background-color: #ff4081;
+    transform: translateY(-2px);
 }
 
 /* Chat Section Styles */
@@ -347,6 +440,7 @@ nav ul li a:hover, nav ul li a.active {
     height: 400px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .chat-messages {
@@ -364,6 +458,12 @@ nav ul li a:hover, nav ul li a.active {
     background-color: #e6e6e6;
     border-radius: 20px;
     max-width: 80%;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .chat-message.user {
@@ -380,7 +480,7 @@ nav ul li a:hover, nav ul li a.active {
     flex-grow: 1;
     padding: 0.75rem;
     border: 1px solid #ddd;
-    border-radius: 5px 0 0 5px;
+    border-radius: 50px 0 0 50px;
     font-size: 1rem;
 }
 
@@ -389,13 +489,13 @@ nav ul li a:hover, nav ul li a.active {
     color: #ffffff;
     border: none;
     padding: 0.75rem 1.5rem;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 50px 50px 0;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: var(--transition);
 }
 
 #chatForm button:hover {
-    background-color: #2980b9;
+    background-color: var(--secondary-color);
 }
 
 /* Footer Styles */
@@ -420,6 +520,7 @@ footer {
 
 .footer-section h3 {
     margin-bottom: 1rem;
+    color: var(--accent-color);
 }
 
 .footer-section ul {
@@ -433,6 +534,11 @@ footer {
 .footer-section ul li a {
     color: #ffffff;
     text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent-color);
 }
 
 .social-links a {
@@ -440,6 +546,12 @@ footer {
     font-size: 1.5rem;
     margin-right: 1rem;
     text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
 .footer-bottom {
@@ -459,6 +571,7 @@ footer {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-content {
@@ -466,9 +579,15 @@ footer {
     margin: 10% auto;
     padding: 2rem;
     border-radius: 10px;
-    width: 80%;
+    width: 90%;
     max-width: 400px;
     position: relative;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .close {
@@ -477,10 +596,16 @@ footer {
     top: 0.5rem;
     font-size: 2rem;
     cursor: pointer;
+    transition: var(--transition);
+}
+
+.close:hover {
+    color: var(--accent-color);
 }
 
 .modal h2 {
     margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
 .modal form {
@@ -488,11 +613,31 @@ footer {
     flex-direction: column;
 }
 
-.modal input {
+.input-group {
+    position: relative;
     margin-bottom: 1rem;
-    padding: 0.75rem;
+}
+
+.input-group i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.modal input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.modal input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 .modal button {
@@ -500,18 +645,30 @@ footer {
     color: #ffffff;
     border: none;
     padding: 0.75rem;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .modal button:hover {
-    background-color: #2980b9;
+    background-color: var(--secondary-color);
 }
 
 .modal p {
     margin-top: 1rem;
     text-align: center;
+}
+
+.modal a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.modal a:hover {
+    color: var(--secondary-color);
 }
 
 /* Notification Styles */
@@ -526,11 +683,13 @@ footer {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1002;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(-10px);
 }
 
 .notification.show {
     opacity: 1;
+    transform: translateY(0);
 }
 
 /* Dark Mode Styles */
@@ -558,7 +717,8 @@ body.dark-mode {
         flex-direction: column;
     }
 
-    #searchCommunities {
+    .search-wrapper {
+        margin-right: 0;
         margin-bottom: 1rem;
     }
 

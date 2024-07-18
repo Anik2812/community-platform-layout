@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConnectHub - Your Interactive Community Platform</title>
+    <title>ConnectHub - Your AI-Powered Community Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -36,12 +36,12 @@
             <div class="hero">
                 <div class="container">
                     <h2 class="typing-effect"></h2>
-                    <p>Join ConnectHub and discover communities that match your interests!</p>
+                    <p>Experience the power of AI-driven community connections!</p>
                     <button id="getStartedBtn" class="cta-button">Get Started</button>
                 </div>
             </div>
             <div class="container">
-                <h3>Featured Communities</h3>
+                <h3>AI-Curated Communities for You</h3>
                 <div class="swiper featured-communities">
                     <div class="swiper-wrapper" id="featuredCommunities"></div>
                     <div class="swiper-pagination"></div>
@@ -53,9 +53,12 @@
 
         <section id="explore">
             <div class="container">
-                <h2>Explore Communities</h2>
+                <h2>Discover Your Perfect Community</h2>
                 <div class="search-filter">
-                    <input type="text" id="searchCommunities" placeholder="Search communities...">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchCommunities" placeholder="Search communities...">
+                    </div>
                     <div class="filter-buttons">
                         <button class="filter-btn active" data-filter="all">All</button>
                         <button class="filter-btn" data-filter="technology">Technology</button>
@@ -70,18 +73,18 @@
 
         <section id="events">
             <div class="container">
-                <h2>Upcoming Events</h2>
+                <h2>AI-Recommended Events</h2>
                 <div id="eventsList" class="events-grid"></div>
             </div>
         </section>
 
         <section id="chat">
             <div class="container">
-                <h2>Community Chat</h2>
+                <h2>AI-Powered Community Chat</h2>
                 <div class="chat-container">
                     <div class="chat-messages" id="chatMessages"></div>
                     <form id="chatForm">
-                        <input type="text" id="chatInput" placeholder="Type your message...">
+                        <input type="text" id="chatInput" placeholder="Ask our AI anything about communities...">
                         <button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
@@ -94,7 +97,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>About ConnectHub</h3>
-                    <p>ConnectHub is a platform designed to bring people together through shared interests and passions.</p>
+                    <p>ConnectHub is an AI-powered platform designed to bring people together through shared interests and passions.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
@@ -124,10 +127,16 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Login</h2>
+            <h2>Login to ConnectHub</h2>
             <form id="loginForm">
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" required>
+                </div>
                 <button type="submit">Login</button>
             </form>
             <p>Don't have an account? <a href="#" id="switchToRegister">Register here</a></p>
@@ -137,12 +146,24 @@
     <div id="registerModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Register</h2>
+            <h2>Join ConnectHub</h2>
             <form id="registerForm">
-                <input type="text" placeholder="Username" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Confirm Password" required>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Confirm Password" required>
+                </div>
                 <button type="submit">Register</button>
             </form>
             <p>Already have an account? <a href="#" id="switchToLogin">Login here</a></p>
