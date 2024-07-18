@@ -22,21 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mock data for communities
     const mockCommunities = [
-        { id: 1, name: 'Tech Innovators', description: 'A hub for tech enthusiasts and innovators.', tags: ['technology', 'innovation'], image: 'https://source.unsplash.com/random/300x200/?technology', members: 1520 },
-        { id: 2, name: 'Creative Arts Collective', description: 'Bringing together artists from all disciplines.', tags: ['arts', 'creativity'], image: 'https://source.unsplash.com/random/300x200/?art', members: 985 },
-        { id: 3, name: 'Fitness Fanatics', description: 'Motivate and support each other in fitness journeys.', tags: ['lifestyle', 'fitness'], image: 'https://source.unsplash.com/random/300x200/?fitness', members: 2150 },
-        { id: 4, name: 'Bookworms Unite', description: 'Discuss and discover great books together.', tags: ['arts', 'literature'], image: 'https://source.unsplash.com/random/300x200/?books', members: 1320 },
-        { id: 5, name: 'Green Earth Initiative', description: 'Working together for a sustainable future.', tags: ['lifestyle', 'environment'], image: 'https://source.unsplash.com/random/300x200/?nature', members: 1750 },
-        { id: 6, name: 'Culinary Explorers', description: 'Embark on gastronomic adventures around the world.', tags: ['lifestyle', 'food'], image: 'https://source.unsplash.com/random/300x200/?food', members: 890 },
-        { id: 7, name: 'Digital Nomads', description: 'Connect with fellow remote workers and travelers.', tags: ['lifestyle', 'travel'], image: 'https://source.unsplash.com/random/300x200/?travel', members: 1630 },
-        { id: 8, name: 'AI Enthusiasts', description: 'Explore the fascinating world of artificial intelligence.', tags: ['technology', 'AI'], image: 'https://source.unsplash.com/random/300x200/?robot', members: 1280 },
+        { id: 1, name: 'AI Innovators', description: 'A hub for AI enthusiasts and innovators.', tags: ['technology', 'AI'], image: 'https://images.pexels.com/photos/18069859/pexels-photo-18069859/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-explores-how-humans-can-creatively-collaborate-with-artificial-general-intelligence-agi-in-the-future-and-how-it-can.png', members: 1520 },
+        { id: 2, name: 'Digital Art Collective', description: 'Bringing together digital artists from all disciplines.', tags: ['arts', 'digital'], image: 'https://images.pexels.com/photos/4008890/pexels-photo-4008890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', members: 985 },
+        { id: 3, name: 'Tech Fitness', description: 'Where technology meets fitness and wellness.', tags: ['lifestyle', 'tech', 'fitness'], image: 'https://images.pexels.com/photos/437036/pexels-photo-437036.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', members: 2150 },
+        { id: 4, name: 'Future Readers', description: 'Explore the future of literature and digital reading.', tags: ['arts', 'technology', 'literature'], image: 'https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', members: 1320 },
+        { id: 5, name: 'Green Tech Initiative', description: 'Innovating for a sustainable future through technology.', tags: ['technology', 'environment'], image: 'https://images.pexels.com/photos/1933900/pexels-photo-1933900.jpeg', members: 1750 },
+        { id: 6, name: 'Virtual Gastronomy', description: 'Explore culinary innovations in the digital age.', tags: ['lifestyle', 'food', 'technology'], image: 'https://images.pexels.com/photos/27061057/pexels-photo-27061057/free-photo-of-pasta-and-bread-served-in-a-restaurant.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', members: 890 },
+        { id: 7, name: 'Digital Nomads Unite', description: 'Connect with fellow tech-savvy remote workers and travelers.', tags: ['lifestyle', 'travel', 'technology'], image: 'https://images.pexels.com/photos/5717640/pexels-photo-5717640.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', members: 1630 },
+        { id: 8, name: 'Quantum Computing Explorers', description: 'Dive into the fascinating world of quantum computing.', tags: ['technology', 'science'], image: 'https://images.pexels.com/photos/1472443/pexels-photo-1472443.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', members: 1280 },
     ];
 
     // Mock data for events
     const mockEvents = [
-        { id: 1, name: 'Tech Conference 2024', description: 'Annual gathering of tech innovators and enthusiasts.', date: '2024-09-15', image: 'https://source.unsplash.com/random/300x200/?conference', attendees: 500 },
-        { id: 2, name: 'Art Exhibition: Urban Perspectives', description: 'Showcasing urban-inspired artworks from local artists.', date: '2024-08-20', image: 'https://source.unsplash.com/random/300x200/?exhibition', attendees: 250 },
-        { id: 3, name: 'Fitness Bootcamp', description: 'Intensive 3-day fitness bootcamp for all levels.', date: '2024-07-01', image: 'https://source.unsplash.com/random/300x200/?bootcamp', attendees: 100 },
+        { id: 1, name: 'AI & Ethics Symposium 2024', description: 'Exploring the ethical implications of AI advancements.', date: '2024-09-15', image: 'https://images.pexels.com/photos/17485607/pexels-photo-17485607/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-ai-assitance-in-the-control-systems-needed-to-create-fusion-energy-it-was-created-by-khyati-trehan-as-part.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', attendees: 500 },
+        { id: 2, name: 'Virtual Reality Art Exhibition', description: 'Showcasing cutting-edge artworks in virtual reality.', date: '2024-08-20', image: 'https://images.pexels.com/photos/532559/pexels-photo-532559.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', attendees: 250 },
+        { id: 3, name: 'Tech-Enhanced Wellness Retreat', description: 'A 3-day retreat combining technology and wellness practices.', date: '2024-07-01', image: 'https://images.pexels.com/photos/437036/pexels-photo-437036.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', attendees: 100 },
     ];
 
     // Navigation
@@ -61,14 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.add('swiper-slide');
             card.innerHTML = `
                 <div class="community-card">
-                    <img src="${community.image}" alt="${community.name}">
+                    <img src="${community.image}" alt="${community.name}" loading="lazy">
                     <div class="card-content">
                         <h3>${community.name}</h3>
                         <p>${community.description}</p>
                         <div class="tags">
                             ${community.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                         </div>
-                        <p class="members"><i class="fas fa-users"></i> ${community.members} members</p>
+                        <p class="members"><i class="fas fa-users"></i> ${community.members.toLocaleString()} members</p>
                         <button class="join-btn" data-id="${community.id}">Join Community</button>
                     </div>
                 </div>
@@ -82,6 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 slidesPerView: 1,
                 spaceBetween: 20,
                 loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
@@ -109,17 +113,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.classList.add('event-card');
             card.innerHTML = `
-                <img src="${event.image}" alt="${event.name}">
-                <div class="card-content">
+                <img src="${event.image}" alt="${event.name}" loading="lazy">
+                <div class="event-content">
                     <h3>${event.name}</h3>
                     <p>${event.description}</p>
-                    <p class="date"><i class="fas fa-calendar-alt"></i> ${event.date}</p>
-                    <p class="attendees"><i class="fas fa-user-friends"></i> ${event.attendees} attending</p>
+                    <p class="event-date"><i class="fas fa-calendar-alt"></i> ${formatDate(event.date)}</p>
+                    <p class="event-attendees"><i class="fas fa-user-friends"></i> ${event.attendees} attending</p>
                     <button class="rsvp-btn" data-id="${event.id}">RSVP</button>
                 </div>
             `;
             container.appendChild(card);
         });
+    }
+
+    // Format date
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
     }
 
     // Initial display
@@ -128,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     displayEvents(eventsList, mockEvents);
 
     // Search functionality
-    searchInput.addEventListener('input', () => {
+    searchInput.addEventListener('input', debounce(() => {
         const searchTerm = searchInput.value.toLowerCase();
         const filteredCommunities = mockCommunities.filter(community => 
             community.name.toLowerCase().includes(searchTerm) || 
@@ -136,7 +146,16 @@ document.addEventListener('DOMContentLoaded', () => {
             community.tags.some(tag => tag.toLowerCase().includes(searchTerm))
         );
         displayCommunities(exploreList, filteredCommunities);
-    });
+    }, 300));
+
+    // Debounce function
+    function debounce(func, delay) {
+        let timeoutId;
+        return function (...args) {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
 
     // Filter functionality
     filterBtns.forEach(btn => {
@@ -175,10 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modal functionality
     function openModal(modal) {
         modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
     }
 
     function closeModal(modal) {
         modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
 
     loginBtn.addEventListener('click', () => openModal(loginModal));
@@ -244,9 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (message) {
             addChatMessage('You', message);
             chatInput.value = '';
-            // Simulate a response after a short delay
+            // Simulate AI response after a short delay
             setTimeout(() => {
-                addChatMessage('Bot', 'Thank you for your message. This is a simulated response.');
+                const aiResponse = generateAIResponse(message);
+                addChatMessage('AI Assistant', aiResponse);
             }, 1000);
         }
     });
@@ -254,25 +276,37 @@ document.addEventListener('DOMContentLoaded', () => {
     function addChatMessage(sender, message) {
         const messageElement = document.createElement('div');
         messageElement.classList.add('chat-message');
+        if (sender === 'You') messageElement.classList.add('user');
         messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
         chatMessages.appendChild(messageElement);
         chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Simple AI response generator (for demonstration purposes)
+    function generateAIResponse(message) {
+        const responses = [
+            "That's an interesting point about communities. Can you elaborate?",
+            "I understand your perspective on that topic. Have you considered joining a related community?",
+            "Your insights are valuable. How do you think we can improve the platform based on that?",
+            "Thanks for sharing. Are there any specific features you'd like to see in our communities?",
+            "I appreciate your input. How has your experience been with similar communities elsewhere?",
+        ];
+        return responses[Math.floor(Math.random() * responses.length)];
     }
 
     // Notification function
     function showNotification(message, type = 'success') {
         const notification = document.getElementById('notification');
         notification.textContent = message;
-        notification.className = `notification ${type}`;
-        notification.style.display = 'block';
+        notification.className = `notification ${type} show`;
 
         setTimeout(() => {
-            notification.style.display = 'none';
+            notification.classList.remove('show');
         }, 3000);
     }
 
     // Typing effect for hero text
-    const heroText = "Connect, Share, and Grow Together";
+    const heroText = "Connect, Share, and Grow with AI-Powered Communities";
     const heroElement = document.querySelector('.typing-effect');
     let i = 0;
 
@@ -280,9 +314,37 @@ document.addEventListener('DOMContentLoaded', () => {
         if (i < heroText.length) {
             heroElement.innerHTML += heroText.charAt(i);
             i++;
-            setTimeout(typeWriter, 100);
+            setTimeout(typeWriter, 50);
         }
     }
 
     typeWriter();
+
+    // Add smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add intersection observer for fade-in effect
+    const fadeElems = document.querySelectorAll('.community-card, .event-card');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    fadeElems.forEach(elem => {
+        elem.style.opacity = 0;
+        elem.style.transform = 'translateY(20px)';
+        elem.style.transition = 'opacity 0.5s, transform 0.5s';
+        observer.observe(elem);
+    });
 });
